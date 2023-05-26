@@ -1,0 +1,33 @@
+@* Pages/Index.razor *@
+@page "/"
+@inject IJSRuntime JSRuntime
+@using System.Threading.Tasks
+
+
+<div class="section education comp-info" data-bg="#0A2647">
+    <Education />
+</div>
+
+<div class="section experience comp-info" data-bg="#144272">
+    <Experience />
+</div>
+<div class="section Contact comp-info" data-bg="#205295">
+    <Contact />
+</div>
+<div class="section project comp-info" data-bg="#2C74B3">
+    <Projects />
+</div>
+<div class="section skills comp-info" data-bg="#144272">
+    <Skills />
+</div>
+
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("changeBackgroundOnScroll");
+        }
+    }
+}
